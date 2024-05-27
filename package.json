@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "self made vue.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cd examples/playground && npm i && npm run dev"
   },
   "dependencies": {
     "@types/node": "^20.12.12"
