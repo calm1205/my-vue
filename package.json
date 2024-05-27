@@ -1,0 +1,19 @@
+{
+  "name": "my-vue",
+  "version": "1.0.0",
+  "description": "self made vue.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calm1205/my-vue.git"
+  },
+  "author": "calm1205",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calm1205/my-vue/issues"
+  },
+  "homepage": "https://github.com/calm1205/my-vue#readme"
+}
