@@ -1,3 +1,3 @@
-import { helloMyVue } from "my-vue";
+import { helloMyVue } from "my-vue"
 
-helloMyVue();
+helloMyVue()
