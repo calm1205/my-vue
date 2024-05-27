@@ -8,9 +8,9 @@ export type App = {
 
 export const createApp = (options: Options): App => ({
   mount: (selector) => {
-    const root = document.querySelector(selector)
-    if (!root) return
+    const dom = document.querySelector(selector)
+    if (!dom) return
 
-    root.innerHTML = options.render()
+    dom.innerHTML = options.render()
   },
 })
