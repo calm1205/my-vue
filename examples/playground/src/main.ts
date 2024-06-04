@@ -1,7 +1,9 @@
-import { createApp } from "my-vue"
+import { createApp, h } from "my-vue"
 
 const app = createApp({
-  render: () => "hello world",
+  render() {
+    return h("div", {}, ["Hello, World!"])
+  },
 })
 
 app.mount("#app")
