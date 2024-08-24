@@ -3,7 +3,10 @@ import { VNode } from "./vnode"
 /**
  * DOMに依存する操作のインターフェース
  */
-export interface RendererOptions<HostNode = RendererNode> {
+export interface RendererOptions<
+  HostNode = RendererNode,
+  HostElement = RendererElement,
+> {
   createElement(type: string): HostNode
 
   createText(text: string): HostNode
@@ -11,6 +14,8 @@ export interface RendererOptions<HostNode = RendererNode> {
   setElementText(node: HostNode, text: string): void
 
   insert(child: HostNode, parent: HostNode, anchor?: HostNode | null): void
+
+  patchProp(el: HostElement, key: string, value: any): void
 }
 
 export interface RendererNode {
