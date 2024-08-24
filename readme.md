@@ -1,6 +1,7 @@
 ```
 - runtime-core
   - renderer.ts
+  - apiCreateApp.ts
 - runtime-dom
   - index.ts
   - nodeOps.ts
@@ -38,6 +39,18 @@ rendererはRendererOptionsがどのように実装されているか知る必要
 注入されるnodeOptions視点では、rendererに依存されている。<br/>
 しかし、依存されている側のnodeOptionsはRendererOptionsというインターフェースに依存している。(依存性逆転の法則,DIP)
 
+### apiCreateApp.ts
+
+renderを受取り、createAppを返すファクトリ関数。<br/>
+
+```ts
+const createAppAPI = (render) => {}
+
+// call example
+const app = createAppAPI(render)
+app.mount("#app")
+```
+
 <br/><br/>
 
 ## runtime-dom
@@ -47,7 +60,9 @@ querySelectorやcreateElementなどのDOM APIを利用している。
 
 ### index.ts
 
-renderにnodeOpesを注入してrendererを生成
+renderにnodeOpesを注入してrendererを生成。<br/>
+createAppAPIにrenderを注入してcreateAppを生成<br/>
+createAppをexport
 
 ### nodeOps.ts
 
