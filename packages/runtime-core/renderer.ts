@@ -1,5 +1,8 @@
 import { VNode } from "./vnode"
 
+/**
+ * DOMに依存する操作のインターフェース
+ */
 export interface RendererOptions<HostNode = RendererNode> {
   createElement(type: string): HostNode
 
@@ -21,6 +24,9 @@ export type RootRenderFunction<HostElement = RendererElement> = (
   container: HostElement,
 ) => void
 
+/**
+ * renderを生成するファクトリ関数
+ */
 export function createRenderer(options: RendererOptions) {
   const {
     createElement: hostCreateElement,
