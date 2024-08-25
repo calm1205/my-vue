@@ -44,6 +44,7 @@ export function createRenderer(options: RendererOptions) {
     if (typeof vnode === "string") return hostCreateText(vnode)
     const el = hostCreateElement(vnode.type)
 
+    // propsのeventを登録
     Object.entries(vnode.props).forEach(([key, value]) => {
       hostPatchProp(el, key, value)
     })

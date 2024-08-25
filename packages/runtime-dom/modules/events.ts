@@ -20,26 +20,31 @@ export function removeEventListener(
   el.removeEventListener(event, handler)
 }
 
+/**
+ * elにeventを着脱
+ * invokersに既存eventを登録することでaddEventListenerの重複を回避
+ */
 export function patchEvent(
   /** イベントが着脱される対象のElement */
   el: Element & { _vei?: Record<string, Invoker | undefined> },
   /** イベント名 e.g. onClick */
   eventRawName: string,
-  value: EventValue | null,
+  /** イベントそのもの */
+  eventValue: EventValue | null,
 ) {
   // vei = vue event invokers
   const invokers = el._vei || (el._vei = {})
   const existingInvoker = invokers[eventRawName]
 
   // 既にイベントが登録されている場合
-  if (value && existingInvoker) {
+  if (eventValue && existingInvoker) {
     // patch
-    existingInvoker.value = value
+    existingInvoker.value = eventValue
   } else {
     const eventName = parseName(eventRawName)
-    if (value) {
+    if (eventValue) {
       // add
-      const invoker = (invokers[eventRawName] = createInvoker(value))
+      const invoker = (invokers[eventRawName] = createInvoker(eventValue))
       addEventListener(el, eventName, invoker)
     } else if (existingInvoker) {
       // remove
