@@ -16,6 +16,8 @@ export interface RendererOptions<
   insert(child: HostNode, parent: HostNode, anchor?: HostNode | null): void
 
   patchProp(el: HostElement, key: string, value: any): void
+
+  patchAttr(el: HostElement, key: string, value: any): void
 }
 
 export interface RendererNode {
@@ -38,6 +40,7 @@ export function createRenderer(options: RendererOptions) {
     createText: hostCreateText,
     insert: hostInsert,
     patchProp: hostPatchProp,
+    patchAttr: hostPatchAttr,
   } = options
 
   function renderVNode(vnode: VNode | string) {
@@ -47,6 +50,7 @@ export function createRenderer(options: RendererOptions) {
     // propsのeventを登録
     Object.entries(vnode.props).forEach(([key, value]) => {
       hostPatchProp(el, key, value)
+      hostPatchAttr(el, key, value)
     })
 
     for (const child of vnode.children) {

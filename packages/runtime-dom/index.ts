@@ -5,8 +5,9 @@ import {
 } from "../runtime-core"
 import { nodeOps } from "./nodeOps"
 import { patchProp } from "./patchProp"
+import { patchAttr } from "./modules/attrs"
 
-const { render } = createRenderer({ ...nodeOps, patchProp })
+const { render } = createRenderer({ ...nodeOps, patchProp, patchAttr })
 const _createApp = createAppAPI(render)
 
 export const createApp = ((...args) => {

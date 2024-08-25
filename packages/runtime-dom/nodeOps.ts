@@ -1,6 +1,9 @@
 import { RendererOptions } from "../runtime-core"
 
-export const nodeOps: Omit<RendererOptions<Node>, "patchProp"> = {
+export const nodeOps: Omit<
+  RendererOptions<Node>,
+  "patchProp" | "patchAttrs"
+> = {
   createElement: (tagName) => {
     return document.createElement(tagName)
   },
